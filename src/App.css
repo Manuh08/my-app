@@ -5,38 +5,112 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background-color: #1c1c1c;
+  color: white;
+  font-family: "Poppins", sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #ff6ec7;
+  margin-bottom: 1.5rem;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.box {
+  background: #282828;
+  border-radius: 15px;
+  padding: 15px 25px;
+  width: 100px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  background: #3a3a3a;
+}
+
+.box p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.box span {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.final-message {
+  font-size: 1.5rem;
+  color: #00ffb7;
+  margin-top: 20px;
+}
+
+.text-section {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.text-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+.photo {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 15px;
+  border: 2px solid #ff6ec7;
+  box-shadow: 0 0 15px #ff6ec7;
+}
+
+/* Animação leve no contador */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.box p {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .box {
+    width: 80px;
+    padding: 10px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .photo {
+    width: 90%;
+  }
 }

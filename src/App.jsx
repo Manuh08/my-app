@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import manuhFormatura from "./assets/manuh.formatura.jpg"; // imagem que você vai colocar depois
+import manuhFormatura from "./assets/manuh.formatura.jpg";
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({});
   const [isFinished, setIsFinished] = useState(false);
 
+  // Contagem regressiva
   useEffect(() => {
     const targetDate = new Date("2025-12-15T00:00:00").getTime();
 
@@ -32,76 +33,72 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // 🌸 Flores de cerejeira caindo
+  useEffect(() => {
+    const flowerCount = 15;
+
+    for (let i = 0; i < flowerCount; i++) {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.textContent = "🌸";
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = 5 + Math.random() * 5 + "s";
+      flower.style.animationDelay = Math.random() * 5 + "s";
+      document.body.appendChild(flower);
+    }
+
+    return () => {
+      document.querySelectorAll(".flower").forEach((f) => f.remove());
+    };
+  }, []);
+
   return (
-    <>
-      <div className="container">
-        <h1 className="title">🎓 Manuela Soares Pacheco - INFO 6A</h1>
+    <div className="container">
+      <h1 className="title">🎓 Manuela Soares Pacheco - INFO 6A</h1>
 
-        {!isFinished ? (
-          <>
-            <h2>Contagem regressiva para a formatura!</h2>
-            <div className="timer">
-              <div className="box">
-                <p>{timeLeft.days || 0}</p>
-                <span>Dias</span>
-              </div>
-              <div className="box">
-                <p>{timeLeft.hours || 0}</p>
-                <span>Horas</span>
-              </div>
-              <div className="box">
-                <p>{timeLeft.minutes || 0}</p>
-                <span>Minutos</span>
-              </div>
-              <div className="box">
-                <p>{timeLeft.seconds || 0}</p>
-                <span>Segundos</span>
-              </div>
+      {!isFinished ? (
+        <>
+          <h2>Contagem regressiva para a formatura!</h2>
+          <div className="timer">
+            <div className="box">
+              <p>{timeLeft.days || 0}</p>
+              <span>Dias</span>
             </div>
-          </>
-        ) : (
-          <h2 className="final-message">
-            Parabéns por chegar no dia mais esperado desses três anos, tudo de bomm! 💖
-          </h2>
-        )}
+            <div className="box">
+              <p>{timeLeft.hours || 0}</p>
+              <span>Horas</span>
+            </div>
+            <div className="box">
+              <p>{timeLeft.minutes || 0}</p>
+              <span>Minutos</span>
+            </div>
+            <div className="box">
+              <p>{timeLeft.seconds || 0}</p>
+              <span>Segundos</span>
+            </div>
+          </div>
+        </>
+      ) : (
+        <h2 className="final-message">
+          Parabéns por chegar no dia mais esperado desses três anos, tudo de bomm! 💖
+        </h2>
+      )}
 
-        <div className="text-section">
-          <p>
-            ✨ Depois da formatura, pretendo seguir meus sonhos, conquistar meus
-            objetivos e aproveitar cada momento dessa nova fase da vida! Que o futuro
-            traga muitas conquistas e sorrisos! 💫
-          </p>
-        </div>
-
-        <img
-          src={manuhFormatura}
-          alt="Foto da Manuela - formatura"
-          className="photo"
-        />
+      <div className="text-section">
+        <p>
+          ✨ Depois da formatura, pretendo seguir meus sonhos, conquistar meus
+          objetivos e aproveitar cada momento dessa nova fase da vida! Que o futuro
+          traga muitas conquistas e sorrisos! 💫
+        </p>
       </div>
-    </>
+
+      <img
+        src={manuhFormatura}
+        alt="Foto da Manuela - formatura"
+        className="photo"
+      />
+    </div>
   );
 }
 
 export default App;
-
-
-// gera flores de cerejeira caindo
-useEffect(() => {
-  const flowerCount = 15;
-
- for (let i = 0; i < flowerCount; i++) {
-  const flower = document.createElement("div");
-  flower.classList.add("flower");
-  flower.textContent = "🌸";
-  flower.style.left = Math.random() * 100 + "vw";
-  flower.style.animationDuration = 5 + Math.random() * 5 + "s";
-  flower.style.animationDelay = Math.random() * 5 + "s";
-  document.body.appendChild(flower);
-}
-
-
-  return () => {
-    document.querySelectorAll(".flower").forEach((f) => f.remove());
-  };
-}, []);

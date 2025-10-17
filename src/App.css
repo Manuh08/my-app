@@ -1,27 +1,43 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
+/* Fundo lilás com efeito de chuva de flores */
 body {
-  background-color: #1c1c1c;
-  color: white;
+  margin: 0;
+  background: linear-gradient(180deg, #d5b7ff 0%, #c7a6ff 100%);
+  color: #2d2d2d;
   font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 
+/* Container principal */
 .container {
   text-align: center;
   padding: 20px;
+  position: relative;
+  z-index: 2;
 }
 
+/* Título */
 .title {
   font-size: 2rem;
-  color: #ff6ec7;
+  color: #5e2b97;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
+.title::before {
+  content: "🎓";
+}
+
+/* Subtítulo */
+h2 {
+  color: #4b1f85;
+  margin-bottom: 15px;
+}
+
+/* Contador */
 .timer {
   display: flex;
   justify-content: center;
@@ -31,72 +47,92 @@ body {
 }
 
 .box {
-  background: #282828;
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 15px;
   padding: 15px 25px;
   width: 100px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(94, 43, 151, 0.3);
+  transition: transform 0.3s ease;
 }
 
 .box:hover {
   transform: scale(1.05);
-  background: #3a3a3a;
 }
 
 .box p {
   font-size: 2rem;
   font-weight: bold;
+  color: #3c1765;
   margin: 0;
 }
 
 .box span {
   font-size: 1rem;
-  color: #aaa;
+  color: #4b1f85;
 }
 
+/* Mensagem final */
 .final-message {
   font-size: 1.5rem;
-  color: #00ffb7;
+  color: #6b11d6;
   margin-top: 20px;
-}
-
-.text-section {
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.3);
   padding: 15px;
   border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 0 15px rgba(120, 60, 180, 0.2);
+}
+
+/* Texto */
+.text-section {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(94, 43, 151, 0.3);
 }
 
 .text-section p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #f0f0f0;
+  color: #3e146d;
 }
 
+/* Imagem */
 .photo {
   margin-top: 2rem;
   width: 100%;
   max-width: 350px;
   border-radius: 15px;
-  border: 2px solid #ff6ec7;
-  box-shadow: 0 0 15px #ff6ec7;
+  border: 2px solid #ae6aff;
+  box-shadow: 0 0 20px rgba(170, 80, 255, 0.3);
 }
 
-/* Animação leve no contador */
-@keyframes pulse {
+/* Flores de cerejeira caindo */
+.flower {
+  position: fixed;
+  top: -10px;
+  background: url("https://cdn-icons-png.flaticon.com/512/616/616408.png")
+    no-repeat center/contain;
+  width: 30px;
+  height: 30px;
+  opacity: 0.8;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+/* Animação da chuva */
+@keyframes fall {
   0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
   }
-}
-
-.box p {
-  animation: pulse 1.5s infinite ease-in-out;
 }
 
 /* Responsividade */

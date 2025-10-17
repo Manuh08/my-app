@@ -90,14 +90,16 @@ export default App;
 useEffect(() => {
   const flowerCount = 15;
 
-  for (let i = 0; i < flowerCount; i++) {
-    const flower = document.createElement("div");
-    flower.classList.add("flower");
-    flower.style.left = Math.random() * 100 + "vw";
-    flower.style.animationDuration = 5 + Math.random() * 5 + "s";
-    flower.style.animationDelay = Math.random() * 5 + "s";
-    document.body.appendChild(flower);
-  }
+ for (let i = 0; i < flowerCount; i++) {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.textContent = "🌸";
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = 5 + Math.random() * 5 + "s";
+  flower.style.animationDelay = Math.random() * 5 + "s";
+  document.body.appendChild(flower);
+}
+
 
   return () => {
     document.querySelectorAll(".flower").forEach((f) => f.remove());
